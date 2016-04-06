@@ -12,5 +12,9 @@ EXPOSE 8080
 # openshift containers run as random users
 RUN chmod -R go+u /var/cache/nginx /var/run
 
+# run as a non-root user by ID
+# openshift will not actually run as this uid
+USER 1000
+
 # copy in sample files
 COPY public-html /etc/nginx/html
